@@ -17,6 +17,7 @@
 <script>
 import FormInput from 'components/Common/Input/Input'
 import CommonForm from 'components/Common/Form/Form'
+
 export default {
   data: () => ({
     formName: 'form'
