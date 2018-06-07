@@ -11,6 +11,7 @@
       <form-input form-name="password" placeholder="输入密码" icon-url="http://b-lemon.heiyanimg.com/_res/css/zhangwen/mobile/img/code@2x.png">
       </form-input>
     </common-form>
+    <router-link class="sign_up" to="/accounts/signup">注册</router-link>
   </div>
 </template>
 
