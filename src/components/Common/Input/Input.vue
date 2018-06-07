@@ -1,7 +1,7 @@
 <template>
   <div class="form_input">
     <img v-if="iconUrl" v-bind:src="iconUrl" alt="">
-    <input type="text" v-bind:name="formName">
+    <input type="text" v-bind:name="formName" v-bind:placeholder="placeholder">
     <slot></slot>
   </div>
 </template>
