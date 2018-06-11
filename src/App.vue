@@ -1,20 +1,23 @@
 <template>
   <div id="app">
     <router-view></router-view>
+    <import-com></import-com>
   </div>
 </template>
 
 <script>
 import NormalHeader from 'components/Header/NormalHeader/NormalHeader'
+import ImportCom from 'components/Common/ImportCom/ImportCom'
 
 export default {
   name: 'App',
   components: {
-    NormalHeader
+    NormalHeader,
+    ImportCom
   }
 }
 </script>
 
-<style scoped lang="less">
-  @import "./static/style/common/index";
+<style lang="less">
+  @import "./static/style/base";
 </style>

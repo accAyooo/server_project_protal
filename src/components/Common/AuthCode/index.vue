@@ -1,25 +1,21 @@
 <template>
-  <img v-bind:src="imgSrc" alt="动态验证码">
+  <img class="auth_code_img" v-bind:src="imgSrc + timestamp" alt="动态验证码">
 </template>
 
 <script>
-import { SERVER_DOMAIN } from '../../../common/config'
+import { SERVER_DOMAIN } from 'common/config'
 
 export default {
   data () {
     return {
-      imgSrc: SERVER_DOMAIN + '/auth/code?t=' + this.props.timestamp
+      imgSrc: SERVER_DOMAIN + '/auth/code?t='
     }
   },
   props: {
     timestamp: {
-      type: String,
-      default: ''
+      type: Number,
+      default: 0
     }
   }
 }
 </script>
-
-<style lang="less" scoped>
-
-</style>

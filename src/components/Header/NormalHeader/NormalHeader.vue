@@ -32,9 +32,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="less">
-  @import "../../../static/style/common/index";
-  @import "../../../static/style/header/index";
-
-</style>
