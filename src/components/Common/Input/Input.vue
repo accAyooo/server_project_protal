@@ -1,7 +1,8 @@
 <template>
   <div class="form_input">
     <img v-if="iconUrl" v-bind:src="iconUrl" alt="">
-    <input type="text" v-bind:name="formName" v-bind:placeholder="placeholder">
+    <input :value="value" type="text" v-bind:name="formName" v-bind:placeholder="placeholder"
+           ref="input" @input="$emit('input', $event.target.value)">
     <slot></slot>
   </div>
 </template>
@@ -18,6 +19,10 @@ export default {
       default: ''
     },
     iconUrl: {
+      type: String,
+      default: ''
+    },
+    value: {
       type: String,
       default: ''
     }

@@ -28,3 +28,11 @@ export function register (authCode, timestamp, nickName, email, password) {
   const url = SERVER_DOMAIN + '/user/register'
   return jsonp(url, data, JSONP_OPTIONS)
 }
+
+export function getAuthCode (timestamp) {
+  const url = SERVER_DOMAIN + '/auth/code'
+  const data = {
+    t: timestamp
+  }
+  return jsonp(url, data)
+}

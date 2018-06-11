@@ -2,7 +2,6 @@
   <div class="form">
     <slot></slot>
     <p class="error"></p>
-    <input class="submit_btn" type="text" v-bind:value="btnValue">
   </div>
 </template>
 
