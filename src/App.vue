@@ -1,19 +1,26 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <import-com></import-com>
+    <message-alerter ref="alerter"></message-alerter>
   </div>
 </template>
 
 <script>
 import NormalHeader from 'components/Header/NormalHeader/NormalHeader'
-import ImportCom from 'components/Common/ImportCom/ImportCom'
+import MessageAlerter from 'components/Common/MessageAlerter/MessageAlerter'
 
 export default {
   name: 'App',
+  data: () => ({
+  }),
+  methods: {
+    messageAlerter: function (msg) {
+      this.$refs.alerter.messageAlerter(msg)
+    }
+  },
   components: {
     NormalHeader,
-    ImportCom
+    MessageAlerter
   }
 }
 </script>

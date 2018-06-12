@@ -19,7 +19,7 @@ export function getUserInfo () {
  */
 export function register (authCode, timestamp, nickName, email, password) {
   const data = {
-    authCode: authCode,
+    code: authCode,
     timestamp: timestamp,
     nickName: nickName,
     email: email,

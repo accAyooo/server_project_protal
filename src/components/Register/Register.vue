@@ -7,14 +7,14 @@
       <form-input v-model="form.email" form-name="email" placeholder="输入邮箱号" icon-url="http://b-lemon.heiyanimg.com/_res/css/zhangwen/mobile/img/name@2x.png">
       </form-input>
       <form-input v-model="form.code" form-name="code" placeholder="图片验证码" icon-url="http://b-lemon.heiyanimg.com/_res/css/zhangwen/mobile/img/imgcode@2x.png">
-        <auth-code @click.native.stop.prevent="generateAuthCode" :timestamp="form.timestamp"></auth-code>
+        <auth-code @click.native.stop.prevent="_generateAuthCode" :timestamp="form.timestamp"></auth-code>
       </form-input>
       <form-input v-model="form.nickName" form-name="nickName" placeholder="输入昵称" icon-url="http://b-lemon.heiyanimg.com/_res/css/zhangwen/mobile/img/name@2x.png">
       </form-input>
       <form-input v-model="form.password" form-name="password" placeholder="输入密码" icon-url="http://b-lemon.heiyanimg.com/_res/css/zhangwen/mobile/img/code@2x.png"></form-input>
-      <form-input v-model="form.secPassword" form-name="secPassword" placeholder="确认密码" icon-url="http://b-lemon.heiyanimg.com/_res/css/zhangwen/mobile/img/code@2x.png">
+      <form-input v-model="form.recPassword" form-name="recPassword" placeholder="确认密码" icon-url="http://b-lemon.heiyanimg.com/_res/css/zhangwen/mobile/img/code@2x.png">
       </form-input>
-      <input class="submit_btn" type="button" value="注册" @click.stop.prevent="login(form.email, form.code, form.nickName, form.password, form.recPassword)">
+      <input class="submit_btn" type="button" value="注册" @click.stop.prevent="_register(form.email, form.code, form.timestamp, form.nickName, form.password, form.recPassword)">
     </common-form>
     <router-link class="sign_up" to="/accounts/login">已有账户，去登录</router-link>
   </div>
@@ -24,8 +24,9 @@
 import CommonForm from 'components/Common/Form/Form'
 import AuthCode from 'components/Common/AuthCode/'
 import FormInput from 'components/Common/Input/Input'
+import { register } from 'service/UserService'
 
-import { getRefs } from 'utils/kernel'
+import { messageAlert } from 'utils/kernel'
 
 export default {
   data () {
@@ -35,16 +36,14 @@ export default {
         nickName: '',
         code: '',
         password: '',
-        secPassword: '',
+        recPassword: '',
         timestamp: ''
       }
     }
   },
   created () {
-    // this._generateAuthCode.bind(this)
-    this.generateAuthCode()
-    console.log(this.$parent)
-    console.log(getRefs())
+    this._generateAuthCode()
+    this._register.bind(this)
   },
   components: {
     CommonForm,
@@ -52,9 +51,17 @@ export default {
     AuthCode
   },
   methods: {
-    _register: (email, code, timestamp, nickName, password, recPassword) => {
+    _register: function (email, code, timestamp, nickName, password, recPassword) {
+      console.log(password, recPassword)
+      if (password !== recPassword) {
+        messageAlert(this, '两次密码不一致')
+        return
+      }
+      register(code, timestamp, nickName, email, password).then((res) => {
+        console.log(res)
+      })
     },
-    generateAuthCode: function (e) {
+    _generateAuthCode: function (e) {
       this.form.timestamp = new Date().getTime()
     }
   }
