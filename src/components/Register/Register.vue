@@ -27,6 +27,7 @@ import FormInput from 'components/Common/Input/Input'
 import { register } from 'service/UserService'
 
 import { messageAlert } from 'utils/kernel'
+import {ERROR_CODE, SUCCESS_CODE} from 'common/config'
 
 export default {
   data () {
@@ -52,13 +53,18 @@ export default {
   },
   methods: {
     _register: function (email, code, timestamp, nickName, password, recPassword) {
-      console.log(password, recPassword)
       if (password !== recPassword) {
         messageAlert(this, '两次密码不一致')
         return
       }
       register(code, timestamp, nickName, email, password).then((res) => {
-        console.log(res)
+        if (res.code === ERROR_CODE) {
+          messageAlert(res.message)
+          return
+        }
+        if (res.code === SUCCESS_CODE) {
+          this.$router.go('/')
+        }
       })
     },
     _generateAuthCode: function (e) {
@@ -67,6 +73,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-</style>

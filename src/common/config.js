@@ -7,3 +7,5 @@ export const JSONP_OPTIONS = {
 
 export const ERROR_CODE = 0
 export const SUCCESS_CODE = 1
+
+export const LOCAL_STORAGE_USER = 'LOCAL_USER'

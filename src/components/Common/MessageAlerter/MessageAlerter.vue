@@ -10,7 +10,6 @@ export default {
     timer: null
   }),
   created: function () {
-    console.log(this)
   },
   methods: {
     messageAlerter: function (mes, time) {

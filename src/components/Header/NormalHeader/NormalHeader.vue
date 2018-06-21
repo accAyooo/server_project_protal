@@ -13,20 +13,14 @@
 </template>
 
 <script>
-import { getUserInfo } from 'service/UserService'
-import { SUCCESS_CODE } from 'common/config'
+import { getUserFromStorage } from 'service/UserService'
 
 export default {
   data: function () {
     return {user: null}
   },
   created () {
-    getUserInfo().then((res) => {
-      console.log(res)
-      if (res.code === SUCCESS_CODE) {
-        this.data().user = res
-      }
-    })
+    this.user = getUserFromStorage()
   },
   methods: {
   }

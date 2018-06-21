@@ -1,5 +1,6 @@
-import {SERVER_DOMAIN, JSONP_OPTIONS} from 'common/config'
+import {SERVER_DOMAIN, JSONP_OPTIONS, LOCAL_STORAGE_USER, SUCCESS_CODE} from 'common/config'
 import jsonp from 'utils/jsonp'
+import storage from 'utils/localStorage'
 
 /**
  * 获取登录用户信息
@@ -20,11 +21,46 @@ export function getUserInfo () {
 export function register (authCode, timestamp, nickName, email, password) {
   const data = {
     code: authCode,
-    timestamp: timestamp,
+    t: timestamp,
     nickName: nickName,
     email: email,
     password: password
   }
   const url = SERVER_DOMAIN + '/user/register'
-  return jsonp(url, data, JSONP_OPTIONS)
+  let promise = jsonp(url, data, JSONP_OPTIONS)
+  promise.then((res) => {
+    if (res.code === SUCCESS_CODE) {
+      saveUserInStorage(res.result)
+    }
+  })
+  return promise
+}
+
+export function login (authCode, timestamp, email, password) {
+  const data = {
+    authCode: authCode,
+    t: timestamp,
+    email: email,
+    password: password
+  }
+  const url = SERVER_DOMAIN + '/user/login'
+  let promise = jsonp(url, data, JSONP_OPTIONS)
+  promise.then((res) => {
+    if (res.code === SUCCESS_CODE) {
+      saveUserInStorage(res.result)
+    }
+  })
+  return promise
+}
+
+export function getUserFromStorage () {
+  return storage.get(LOCAL_STORAGE_USER)
+}
+
+export function saveUserInStorage (userInfo) {
+  storage.save(LOCAL_STORAGE_USER, userInfo)
+}
+
+export function clearUserFromStorage () {
+  storage.remove(LOCAL_STORAGE_USER)
 }
