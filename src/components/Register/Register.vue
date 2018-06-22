@@ -59,11 +59,11 @@ export default {
       }
       register(code, timestamp, nickName, email, password).then((res) => {
         if (res.code === ERROR_CODE) {
-          messageAlert(res.message)
+          messageAlert(this, res.message)
           return
         }
         if (res.code === SUCCESS_CODE) {
-          this.$router.go('/')
+          this.$router.push('/')
         }
       })
     },

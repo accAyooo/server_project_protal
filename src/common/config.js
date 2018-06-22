@@ -1,4 +1,4 @@
-export const SERVER_DOMAIN = 'http://localhost:8081'
+export const SERVER_DOMAIN = 'http://localhost:3001'
 
 export const JSONP_OPTIONS = {
   param: 'callback',

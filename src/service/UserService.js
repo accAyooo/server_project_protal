@@ -1,6 +1,5 @@
 import {SERVER_DOMAIN, JSONP_OPTIONS, LOCAL_STORAGE_USER, SUCCESS_CODE} from 'common/config'
 import jsonp from 'utils/jsonp'
-import storage from 'utils/localStorage'
 
 /**
  * 获取登录用户信息
@@ -53,14 +52,25 @@ export function login (authCode, timestamp, email, password) {
   return promise
 }
 
+export function logout () {
+  const url = SERVER_DOMAIN + '/user/logout'
+  let promise = jsonp(url, {}, JSONP_OPTIONS)
+  promise.then((res) => {
+    if (res.code === SUCCESS_CODE) {
+      clearUserFromStorage()
+    }
+  })
+  return promise
+}
+
 export function getUserFromStorage () {
-  return storage.get(LOCAL_STORAGE_USER)
+  return JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER))
 }
 
 export function saveUserInStorage (userInfo) {
-  storage.save(LOCAL_STORAGE_USER, userInfo)
+  localStorage.setItem(LOCAL_STORAGE_USER, JSON.stringify(userInfo))
 }
 
 export function clearUserFromStorage () {
-  storage.remove(LOCAL_STORAGE_USER)
+  localStorage.removeItem(LOCAL_STORAGE_USER)
 }

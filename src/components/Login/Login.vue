@@ -22,6 +22,8 @@ import FormInput from 'components/Common/Input/Input'
 import CommonForm from 'components/Common/Form/Form'
 import AuthCode from 'components/Common/AuthCode/'
 import { login } from 'service/UserService'
+import { SUCCESS_CODE } from 'common/config'
+import { messageAlert } from 'utils/kernel'
 
 export default {
   data () {
@@ -38,9 +40,13 @@ export default {
     this._generateAuthCode()
   },
   methods: {
-    _login: (code, timestamp, email, password) => {
+    _login: function (code, timestamp, email, password) {
       login(code, timestamp, email, password).then((res) => {
-        console.log(res)
+        if (res.code === SUCCESS_CODE) {
+          this.$router.push('/accounts/people')
+        } else {
+          messageAlert(this, res.message)
+        }
       })
     },
     _generateAuthCode: function (e) {
