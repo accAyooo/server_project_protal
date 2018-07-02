@@ -9,3 +9,48 @@
   transform: translate(-50%, -50%);
   z-index: 99;
 }
+
+.block-nav {
+  overflow: hidden;
+  ul {
+    overflow: hidden;
+    li {
+      height: 1rem;
+      float: left;
+      width: 33%;
+      border-bottom: 1px solid #f2f2f2;
+      text-align: center;
+      -webkit-tap-highlight-color: rgba(0,0,0,.08);
+      a {
+        position: relative;
+        height: .5rem;
+        line-height: .5rem;
+        display: block;
+        border-bottom: 1px solid #f8f8f8;
+        color: #666;
+        position: relative;
+        height: 100%;
+        line-height: 1.25rem;
+      }
+      img {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translateX(-50%);
+        display: inline-block;
+      }
+      span.notice-span {
+        width: 6px;
+        border-radius: 50%;
+        height: 6px;
+        background: #fc0d1b;
+        display: inline-block;
+        position: absolute;
+        left: 61%;
+        top: 15%;
+      }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <template>
   <div class="header_normal">
     <div class="left">
-      <img class="header_icon" src="../../../static/image/homelogo@2x.png" alt="header">
+      <img class="header_icon" src="~static/image/homelogo@2x.png" alt="header">
     </div>
     <div class="right">
       <router-link v-if="user" class="jump_icon login" to="/accounts/people"></router-link>
