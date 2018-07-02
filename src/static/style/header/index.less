@@ -1,6 +1,6 @@
 .header_normal {
   height: 50px;
-  line-height: 50px;
+  line-height: 52px;
   background: #fff;
   border-bottom: 1px solid #f2f2f2;
   .left {
@@ -35,6 +35,60 @@
     }
     &.history {
       background-image: url(../../image/shelf@3x.png);
+    }
+  }
+}
+.small-header {
+  height: 50px;
+  line-height: 50px;
+  background: #fff;
+  border-bottom: 1px solid #f2f2f2;
+  .left {
+    -webkit-box-flex: 6;
+    -moz-box-flex: 6;
+    position: absolute;
+    z-index: 2;
+    left: .15rem;
+    height: 50px;
+    .back {
+      background: url(~static/image/back@3x.png) no-repeat left center;
+      background-size: .1rem auto;
+      display: inline-block;
+      width: .2rem;
+      height: 50px;
+      float: left;
+    }
+    .name {
+      width: .8rem;
+      font-size: .15rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      float: left;
+    }
+  }
+  .right {
+    -webkit-box-flex: 4;
+    -moz-box-flex: 4;
+    text-align: right;
+    position: absolute;
+    z-index: 2;
+    right: .15rem;
+    height: 50px;
+    a {
+      display: inline-block;
+      margin-left: 10px;
+      width: .2rem;
+      height: 50px;
+    }
+    .search {
+      background: url(~static/image/sear@3x.png) no-repeat center;
+      background-size: 88% auto;
+    }
+    .open-guide {
+      background: url(~static/image/nav@3x.png) no-repeat center;
+      background-size: 88% auto;
     }
   }
 }

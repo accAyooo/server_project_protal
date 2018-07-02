@@ -3,10 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import 'babel-polyfill'
-import fastClick from 'fastclick'
+// import fastClick from 'fastclick'
 import router from './router/'
 
-fastClick.attach(document.body)
+// fastClick.attach(document.body)
 
 Vue.config.productionTip = false
 

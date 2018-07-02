@@ -1,5 +1,6 @@
 <template>
   <div class="people">
+    <small-header title="个人中心"></small-header>
     <div class="info" :v-if="userInfo != null">
       id:{{ userInfo.id }} <br>
       name: {{ userInfo.name }} <br>
@@ -16,6 +17,7 @@
 import { getUserFromStorage, logout } from 'service/UserService'
 import { SUCCESS_CODE } from 'common/config'
 import BlockNav from 'components/Common/BlockNav/BlockNav'
+import SmallHeader from 'components/Header/SmallHeader/SmallHeader'
 
 export default {
   data: function () {
@@ -33,7 +35,8 @@ export default {
     }
   },
   components: {
-    BlockNav
+    BlockNav,
+    SmallHeader
   },
   created: function () {
     let user = getUserFromStorage()
