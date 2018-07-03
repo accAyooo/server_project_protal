@@ -54,3 +54,48 @@
     }
   }
 }
+
+.guide {
+  position: fixed;
+  background: rgba(0,0,0,.5);
+  width: 100%;
+  height: 100%;
+  top: 50px;
+  z-index: 3;
+  .guide-content {
+    padding: .15rem;
+    background: #fff;
+    overflow: hidden;
+    .guide-footer {
+      text-align: center;
+    }
+    .guide-nav-a {
+      display: inline-block;
+      width: 33%;
+      text-align: center;
+      float: left;
+      line-height: 24px;
+      padding-bottom: .15rem;
+      &>.icon {
+        display: inline-block;
+        width: .4rem;
+        height: .4rem;
+      }
+      .guide-nav-h {
+        display: block;
+        color: #000;
+      }
+      .icon-user {
+        background: url(~static/image/money@2x.png) no-repeat center;
+        background-size: 100% auto;
+      }
+      .icon-home {
+        background: url(~static/image/home@2x.png) no-repeat center;
+        background-size: 100% auto;
+      }
+    }
+  }
+  .closeGuide {
+    height: 100vh;
+  }
+}
